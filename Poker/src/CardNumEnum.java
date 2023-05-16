@@ -1,6 +1,7 @@
 package Poker.src;
 
 public enum CardNumEnum {
+    ONE,
     TWO,
     THREE,
     FOUR,
@@ -11,7 +12,7 @@ public enum CardNumEnum {
     NINE,
     TEN,
     JACK,
-    Queen,
+    QUEEN,
     KING,
     AS
 }

@@ -31,9 +31,9 @@ public class PokerHandler {
     public static boolean checkStraight(ArrayList<CardNumEnum> cards){
         int i = 1;
         int count = 0;
-//        if (cards.contains(1)){
-//            cards.add(14);
-//        }
+        if (cards.contains(CardNumEnum.AS)){
+            cards.add(CardNumEnum.ONE);
+        }
         cards = sort(cards);
 
         for(; i < cards.size(); ++i){

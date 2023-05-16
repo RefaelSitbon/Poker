@@ -24,7 +24,7 @@ class Poker{
     private  void initNumArr(){
         numArr.add(CardNumEnum.TWO);numArr.add(CardNumEnum.THREE);numArr.add(CardNumEnum.FOUR);numArr.add(CardNumEnum.FIVE);
         numArr.add(CardNumEnum.SIX);numArr.add(CardNumEnum.SEVEN);numArr.add(CardNumEnum.EIGHT);numArr.add(CardNumEnum.NINE);
-        numArr.add(CardNumEnum.TEN);numArr.add(CardNumEnum.JACK);numArr.add(CardNumEnum.Queen);numArr.add(CardNumEnum.KING);
+        numArr.add(CardNumEnum.TEN);numArr.add(CardNumEnum.JACK);numArr.add(CardNumEnum.QUEEN);numArr.add(CardNumEnum.KING);
         numArr.add(CardNumEnum.AS);
     }
 
@@ -174,10 +174,9 @@ class Poker{
             randomType = random.nextInt(4);
             card = cardFactory(randomNum, randomType);
             if(cardMap.get(card.type) != null && cardMap.get(card.type).contains(card.num)){
-//                i -= 1;
             }else {
-                return card;
 //                addCard(card);
+                return card;
             }
         }
     }
@@ -204,7 +203,7 @@ class Poker{
         }
     }
 
-    public void sendToPrintEveryCardOption(boolean firstHit){
+    private void sendToPrintEveryCardOption(boolean firstHit){
         printRateDeck(HandRating.StraightFlash, firstHit);
         printRateDeck(HandRating.FourOfAKind, firstHit);
         printRateDeck(HandRating.FullHouse, firstHit);
@@ -224,37 +223,47 @@ class Poker{
 //        printAmountOfOption(HandRating.Pair);
     }
 
+    public static void runDemo(ArrayList<Card> cards){
+        Poker poker = new Poker(cards);
+        poker.sendToPrintEveryRate(true);
+    }
+
+    public static void runDemoAfterFirstHit(ArrayList<Card> cards){
+        Poker poker = new Poker(cards);
+        poker.sendToPrintEveryRate(false);
+    }
+
     public static void main(String[] args) {
-
-        Poker newPpker = new Poker(new ArrayList<>());
-
-        for(int i = 0; i < 5; ++i) {
-            newPpker.addCard(newPpker.createRandomCard());
-        }
-//        newPpker.print(card.type, newPpker.numArr.get(card.num));
-        for (Card c: newPpker.cardsAndDeck) {
-            System.out.print((c.num.ordinal() + 2) + " " + c.type + ",");
-        }
-        System.out.println();
-//        System.out.println("StraightFlash: " + poker.checkStraightFlash(cardList));
-//        System.out.println("checkStraight: " + poker.checkStraight(poker.createArrOfInt(cardList)));
-//        System.out.println("FourOfACount: " + poker.checkFourOfAKind(cardList));
-//        System.out.println("{checkPair: " + poker.checkPair(cardList));
-//        System.out.println("checkTriple: " + poker.checkTriple(cardList) + " }");
-//        System.out.println("checkFullHouse: " + poker.checkFullHouse(cardList));
-//        System.out.println("checkFlush: " + poker.checkFlush(cardList, false));
-//        newPpker.print();
-//        newPpker.checkOptions();
+        ArrayList<Card> arrayList = new ArrayList<>();
+        arrayList.add(new Card(CardTypeEnum.Spades, CardNumEnum.EIGHT));
+        arrayList.add(new Card(CardTypeEnum.Spades, CardNumEnum.SIX));
+        arrayList.add(new Card(CardTypeEnum.Club, CardNumEnum.EIGHT));
+        arrayList.add(new Card(CardTypeEnum.Club, CardNumEnum.FOUR));
+        arrayList.add(new Card(CardTypeEnum.Club, CardNumEnum.NINE));
+        Poker.runDemo(arrayList);
+        arrayList.add(new Card(CardTypeEnum.Club, CardNumEnum.AS));
+//        Poker.runDemoAfterFirstHit(arrayList);
 
 
-        newPpker.sendToPrintEveryRate(true);
-        newPpker.addCard(newPpker.createRandomCard());
-        System.out.println("ADD ANOTHER CARD!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        for (Card c: newPpker.cardsAndDeck) {
-            System.out.print((c.num.ordinal() + 2) + " " + c.type + ",");
-        }
-        System.out.println();
-        newPpker.sendToPrintEveryRate(false);
-//        newPpker.sendToPrintEveryCardOption();
+
+//        Poker newPpker = new Poker(new ArrayList<>());
+//
+//        for(int i = 0; i < 5; ++i) {
+//            newPpker.addCard(newPpker.createRandomCard());
+//        }
+//        for (Card c: newPpker.cardsAndDeck) {
+//            System.out.print((c.num.ordinal() + 2) + " " + c.type + ",");
+//        }
+//        System.out.println();
+//
+//        newPpker.sendToPrintEveryRate(true);
+//        newPpker.addCard(newPpker.createRandomCard());
+//        System.out.println("ADD ANOTHER CARD!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+//        for (Card c: newPpker.cardsAndDeck) {
+//            System.out.print((c.num.ordinal() + 2) + " " + c.type + ",");
+//        }
+////        newPpker.sendToPrintEveryCardOption(true);
+//        System.out.println();
+//        newPpker.sendToPrintEveryRate(false);
     }
 }

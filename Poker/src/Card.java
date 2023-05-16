@@ -1,11 +1,11 @@
 package Poker.src;
 
-class Card implements Cloneable{
+public class Card implements Cloneable{
     public CardTypeEnum type;
     public CardNumEnum num;
     public boolean isAs = false;
 
-    Card(CardTypeEnum type, CardNumEnum num){
+    public Card(CardTypeEnum type, CardNumEnum num){
         this.type = type;
         this.num = num;
 //        if(num == "King" || num == "Queen" || num == "Prince"){
